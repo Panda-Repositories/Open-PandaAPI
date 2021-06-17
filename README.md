@@ -1,7 +1,8 @@
 # Open-Panda Technology API Documentation
 
 ### *By Panda Technologies*
-[*__Full documentation here__*](https://mattlawz.gitbook.io/panda-ui-lib/)
+
+This API is maintaining updating, if a new API is release, it will ask for you to update the Exploit's API or asked to the Developers for Latest Panda API
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
@@ -20,7 +21,7 @@ PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
 ---
 ### Inject API
 ```C#
-        PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda()
+        PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
         // Example [ api.Inject(bool isPuppyMilk = false, bool JoinToPandaDiscord = true) ]
         api.Inject(true, true);       
         
@@ -28,13 +29,13 @@ PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
 ---
 ### Execute Script
 ```C#
-            PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda()
+            PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
             api.Execute("print('hellow')");
 ```
 ---
 ### Check if Inject or Not
 ```C#
-            PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda()
+            PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
             api..PandaInjected();
 ```
 
