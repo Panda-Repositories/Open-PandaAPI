@@ -1,0 +1,5 @@
+C:\Users\kerle\source\repos\PandaModuleAPI\PandaModuleAPI\bin\Debug\PandaModuleAPI.dll
+C:\Users\kerle\source\repos\PandaModuleAPI\PandaModuleAPI\bin\Debug\PandaModuleAPI.pdb
+C:\Users\kerle\source\repos\PandaModuleAPI\PandaModuleAPI\obj\Debug\PandaModuleAPI.csproj.CoreCompileInputs.cache
+C:\Users\kerle\source\repos\PandaModuleAPI\PandaModuleAPI\obj\Debug\PandaModuleAPI.dll
+C:\Users\kerle\source\repos\PandaModuleAPI\PandaModuleAPI\obj\Debug\PandaModuleAPI.pdb
