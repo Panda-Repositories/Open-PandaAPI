@@ -13,18 +13,18 @@ namespace PandaModuleAPI
 {
     public class WeArePanda
     {
-        public static string API_Current_Version = "v1.1";
-        public static string exploitdllname = "Panda.dll";
-        public static string luapipebased = "https://raw.githubusercontent.com/SkieAdmin/Panda-Respiratory/main/API/CurrentPipe";
-        public static string puppy = "RBLXInjector.exe"; //Named of the Custom Injector you want
+        public string API_Current_Version = "v1.2";
+        public string exploitdllname = "Panda.dll";
+        public string luapipebased = "https://raw.githubusercontent.com/SkieAdmin/Panda-Respiratory/main/API/CurrentPipe";
+        public string puppy = "RBLXInjector.exe"; //Named of the Custom Injector you want
 
         
 
-        public async static void Inject(bool isPuppyMilk = false, bool OpenPandaDiscord = true)
+        public async void Inject(bool isPuppyMilk = false, bool OpenPandaDiscord = true)
         {
             WebClient llo = new WebClient();
             string api_version = llo.DownloadString("https://raw.githubusercontent.com/SkieAdmin/Panda-Respiratory/main/API/API_Version");
-            if (!api_version.Contains(WeArePanda.API_Current_Version))
+            if (!api_version.Contains(API_Current_Version))
             {
                 MessageBox.Show("A Newer Version of Panda-API has been Detected, Please Redownload Open-Panda's Technology API");
                 Process.Start("https://github.com/Panda-Respiratory/Open-PandaAPI");
@@ -32,7 +32,7 @@ namespace PandaModuleAPI
             }
             try
             {
-                if (NamedPipeExist(llo.DownloadString(WeArePanda.luapipebased)))//check if the pipe exist
+                if (NamedPipeExist())//check if the pipe exist
                 {
                     MessageBox.Show("Already injected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);//if the pipe exist that's mean that we don't need to inject
                     return;
@@ -45,20 +45,20 @@ namespace PandaModuleAPI
                 if (isPuppyMilk == true)
                 {
                     /*It would use Puppy Injector in this case*/
-                    if (!File.Exists(WeArePanda.puppy))
+                    if (!File.Exists(puppy))
                     {
-                        oc.DownloadFile("https://cdn.discordapp.com/attachments/784597168887300106/785011977973268510/PuppyMilkV3.exe", WeArePanda.puppy);
+                        oc.DownloadFile("https://cdn.discordapp.com/attachments/784597168887300106/785011977973268510/PuppyMilkV3.exe", puppy);
                     }
-                    string filearg = AppDomain.CurrentDomain.BaseDirectory + WeArePanda.exploitdllname;
-                    Process.Start(WeArePanda.puppy, filearg);
+                    string filearg = AppDomain.CurrentDomain.BaseDirectory + exploitdllname;
+                    Process.Start(puppy, filearg);
                     return;
                 }
-                else if (!NamedPipeExist(llo.DownloadString(WeArePanda.luapipebased)))//check if the pipe don't exist
+                else if (!NamedPipeExist())//check if the pipe don't exist
                 {
-                    switch (Injector.DllInjector.GetInstance.Inject("RobloxPlayerBeta", AppDomain.CurrentDomain.BaseDirectory + WeArePanda.exploitdllname))//Process name and dll directory
+                    switch (Injector.DllInjector.GetInstance.Inject("RobloxPlayerBeta", AppDomain.CurrentDomain.BaseDirectory + exploitdllname))//Process name and dll directory
                     {
                         case Injector.DllInjectionResult.DllNotFound://if can't find the dll
-                            MessageBox.Show($"Couldn't find {WeArePanda.exploitdllname}", "Dll was not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);//display messagebox to tell that dll was not found
+                            MessageBox.Show($"Couldn't find {exploitdllname}", "Dll was not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);//display messagebox to tell that dll was not found
                             return;
                         case Injector.DllInjectionResult.GameProcessNotFound://if can't find the process
                             MessageBox.Show("Couldn't find RobloxPlayerBeta.exe!", "Target process was not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);//display messagebox to tell that proccess was not found
@@ -70,7 +70,7 @@ namespace PandaModuleAPI
                 }
                 await Task.Delay(5000);
                 {
-                    if (NamedPipeExist(llo.DownloadString(WeArePanda.luapipebased)))
+                    if (NamedPipeExist())
                     {
                         if (OpenPandaDiscord == true)
                         {
@@ -90,7 +90,7 @@ namespace PandaModuleAPI
             try
             {
                 WebClient llo = new WebClient();
-                if (!NamedPipeExist(llo.DownloadString(WeArePanda.luapipebased)))//check if the pipe don't exist
+                if (!NamedPipeExist())//check if the pipe don't exist
                 {
                     MessageBox.Show("Please Inject Panda-Module.");
                     return;
@@ -108,11 +108,12 @@ namespace PandaModuleAPI
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool WaitNamedPipe(string name, int timeout);
         //function to check if the pipe exist
-        public static bool NamedPipeExist(string pipeName)
+        public bool NamedPipeExist()
         {
             try
             {
-                if (!WaitNamedPipe($"\\\\.\\pipe\\{pipeName}", 0))
+                WebClient llo = new WebClient();
+                if (!WaitNamedPipe($"\\\\.\\pipe\\{llo.DownloadString(luapipebased)}", 0))
                 {
                     int lastWin32Error = Marshal.GetLastWin32Error();
                     if (lastWin32Error == 0)
@@ -133,16 +134,17 @@ namespace PandaModuleAPI
         }
 
         //lua pipe function
-        public static void LuaPipe(string script)
+        public void LuaPipe(string script)
         {
             WebClient llo = new WebClient();
-            if (NamedPipeExist(llo.DownloadString(WeArePanda.luapipebased)))
+            WeArePanda lel = new WeArePanda(); //WTF
+            if (NamedPipeExist())
             {
                 new Thread(() =>//lets run this in another thread so if roblox crash the ui/gui don't freeze or something
                 {
                     try
                     {
-                        using (NamedPipeClientStream namedPipeClientStream = new NamedPipeClientStream(".", llo.DownloadString(WeArePanda.luapipebased), PipeDirection.Out))
+                        using (NamedPipeClientStream namedPipeClientStream = new NamedPipeClientStream(".", llo.DownloadString(lel.luapipebased), PipeDirection.Out))
                         {
                             namedPipeClientStream.Connect();
                             using (StreamWriter streamWriter = new StreamWriter(namedPipeClientStream, System.Text.Encoding.Default, 999999))//changed buffer to max 1mb since default buffer is 1kb
