@@ -4,7 +4,7 @@
 
 This API is maintaining updating, if a new API is release, it will ask for you to update the Exploit's API or asked to the Developers for Latest Panda API
 
-[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20by-SkieHacker%20%26%20Panda%20Development%20Team-lightgrey)](http://commonmark.org)
 
 ![C#](https://img.shields.io/badge/Made%20with-C%23-blue)
 
