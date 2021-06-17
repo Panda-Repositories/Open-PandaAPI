@@ -8,7 +8,7 @@ This API is maintaining updating, if a new API is release, it will ask for you t
 
 ![C#](https://img.shields.io/badge/Made%20with-C%23-blue)
 
-![Discord](https://img.shields.io/discord/761754005906653245)
+[![Discord](https://img.shields.io/discord/761754005906653245)](https://discord.gg/4qk9at2D2g)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/SkieAdmin/Panda-Respiratory/graphs/commit-activity)
 
@@ -36,6 +36,6 @@ PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
 ### Check if Inject or Not
 ```C#
             PandaModuleAPI.WeArePanda api = new PandaModuleAPI.WeArePanda();
-            api..PandaInjected();
+            api..NamedPipeExist();
 ```
 
